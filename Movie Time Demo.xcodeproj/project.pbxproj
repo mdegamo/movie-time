@@ -3,11 +3,12 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
 		48EA03B8965B2784BE5A513D /* Pods_Movie_Time_Demo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1E21E8297393CF1584CAD70A /* Pods_Movie_Time_Demo.framework */; };
+		E4AA8BFD23015E3600A5FAD5 /* R.generated.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4AA8BFC23015E3600A5FAD5 /* R.generated.swift */; };
 		E4DDFEE0230155E700922BCF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4DDFEDF230155E700922BCF /* AppDelegate.swift */; };
 		E4DDFEE2230155E700922BCF /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4DDFEE1230155E700922BCF /* ViewController.swift */; };
 		E4DDFEE5230155E700922BCF /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E4DDFEE3230155E700922BCF /* Main.storyboard */; };
@@ -19,6 +20,7 @@
 /* Begin PBXFileReference section */
 		1E21E8297393CF1584CAD70A /* Pods_Movie_Time_Demo.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Movie_Time_Demo.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		3E62E6CB7777E31010D261F0 /* Pods-Movie Time Demo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Movie Time Demo.release.xcconfig"; path = "Target Support Files/Pods-Movie Time Demo/Pods-Movie Time Demo.release.xcconfig"; sourceTree = "<group>"; };
+		E4AA8BFC23015E3600A5FAD5 /* R.generated.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = R.generated.swift; sourceTree = "<group>"; };
 		E4DDFEDC230155E700922BCF /* Movie Time Demo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Movie Time Demo.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		E4DDFEDF230155E700922BCF /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E4DDFEE1230155E700922BCF /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -45,6 +47,7 @@
 		E4DDFED3230155E700922BCF = {
 			isa = PBXGroup;
 			children = (
+				E4AA8BFC23015E3600A5FAD5 /* R.generated.swift */,
 				E4DDFEDE230155E700922BCF /* Movie Time Demo */,
 				E4DDFEDD230155E700922BCF /* Products */,
 				F94B56F13811C0851613E0AC /* Pods */,
@@ -80,7 +83,6 @@
 				EA00165E940A15EF47D09E54 /* Pods-Movie Time Demo.debug.xcconfig */,
 				3E62E6CB7777E31010D261F0 /* Pods-Movie Time Demo.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -100,6 +102,7 @@
 			buildConfigurationList = E4DDFEF1230155E900922BCF /* Build configuration list for PBXNativeTarget "Movie Time Demo" */;
 			buildPhases = (
 				2EC9D489DF6A5683F51F32B2 /* [CP] Check Pods Manifest.lock */,
+				E4AA8BFB23015DA300A5FAD5 /* Run Script */,
 				E4DDFED8230155E700922BCF /* Sources */,
 				E4DDFED9230155E700922BCF /* Frameworks */,
 				E4DDFEDA230155E700922BCF /* Resources */,
@@ -200,6 +203,26 @@
 			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Movie Time Demo/Pods-Movie Time Demo-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
+		E4AA8BFB23015DA300A5FAD5 /* Run Script */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"$TEMP_DIR/rswift-lastrun",
+			);
+			name = "Run Script";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				$SRCROOT/R.generated.swift,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"$PODS_ROOT/R.swift/rswift\" generate \"$SRCROOT/R.generated.swift\"\n";
+		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -210,6 +233,7 @@
 				E4DDFEE2230155E700922BCF /* ViewController.swift in Sources */,
 				E4DDFEE0230155E700922BCF /* AppDelegate.swift in Sources */,
 				E4DDFEE8230155E700922BCF /* Movie_Time_Demo.xcdatamodeld in Sources */,
+				E4AA8BFD23015E3600A5FAD5 /* R.generated.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
