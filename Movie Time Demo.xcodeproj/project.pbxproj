@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		48EA03B8965B2784BE5A513D /* Pods_Movie_Time_Demo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1E21E8297393CF1584CAD70A /* Pods_Movie_Time_Demo.framework */; };
 		E4DDFEE0230155E700922BCF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4DDFEDF230155E700922BCF /* AppDelegate.swift */; };
 		E4DDFEE2230155E700922BCF /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4DDFEE1230155E700922BCF /* ViewController.swift */; };
 		E4DDFEE5230155E700922BCF /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E4DDFEE3230155E700922BCF /* Main.storyboard */; };
@@ -16,6 +17,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		1E21E8297393CF1584CAD70A /* Pods_Movie_Time_Demo.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Movie_Time_Demo.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		3E62E6CB7777E31010D261F0 /* Pods-Movie Time Demo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Movie Time Demo.release.xcconfig"; path = "Target Support Files/Pods-Movie Time Demo/Pods-Movie Time Demo.release.xcconfig"; sourceTree = "<group>"; };
 		E4DDFEDC230155E700922BCF /* Movie Time Demo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Movie Time Demo.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		E4DDFEDF230155E700922BCF /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E4DDFEE1230155E700922BCF /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -24,6 +27,7 @@
 		E4DDFEE9230155E900922BCF /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		E4DDFEEC230155E900922BCF /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		E4DDFEEE230155E900922BCF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		EA00165E940A15EF47D09E54 /* Pods-Movie Time Demo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Movie Time Demo.debug.xcconfig"; path = "Target Support Files/Pods-Movie Time Demo/Pods-Movie Time Demo.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -31,6 +35,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				48EA03B8965B2784BE5A513D /* Pods_Movie_Time_Demo.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -42,6 +47,8 @@
 			children = (
 				E4DDFEDE230155E700922BCF /* Movie Time Demo */,
 				E4DDFEDD230155E700922BCF /* Products */,
+				F94B56F13811C0851613E0AC /* Pods */,
+				FF6D0B8CA16502F2C4A8A3D8 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -67,6 +74,24 @@
 			path = "Movie Time Demo";
 			sourceTree = "<group>";
 		};
+		F94B56F13811C0851613E0AC /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				EA00165E940A15EF47D09E54 /* Pods-Movie Time Demo.debug.xcconfig */,
+				3E62E6CB7777E31010D261F0 /* Pods-Movie Time Demo.release.xcconfig */,
+			);
+			name = Pods;
+			path = Pods;
+			sourceTree = "<group>";
+		};
+		FF6D0B8CA16502F2C4A8A3D8 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				1E21E8297393CF1584CAD70A /* Pods_Movie_Time_Demo.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -74,9 +99,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = E4DDFEF1230155E900922BCF /* Build configuration list for PBXNativeTarget "Movie Time Demo" */;
 			buildPhases = (
+				2EC9D489DF6A5683F51F32B2 /* [CP] Check Pods Manifest.lock */,
 				E4DDFED8230155E700922BCF /* Sources */,
 				E4DDFED9230155E700922BCF /* Frameworks */,
 				E4DDFEDA230155E700922BCF /* Resources */,
+				7955EA5B803AAB476FD0D631 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -132,6 +159,48 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		2EC9D489DF6A5683F51F32B2 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Movie Time Demo-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		7955EA5B803AAB476FD0D631 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Movie Time Demo/Pods-Movie Time Demo-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Movie Time Demo/Pods-Movie Time Demo-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Movie Time Demo/Pods-Movie Time Demo-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		E4DDFED8230155E700922BCF /* Sources */ = {
@@ -284,6 +353,7 @@
 		};
 		E4DDFEF2230155E900922BCF /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = EA00165E940A15EF47D09E54 /* Pods-Movie Time Demo.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -302,6 +372,7 @@
 		};
 		E4DDFEF3230155E900922BCF /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 3E62E6CB7777E31010D261F0 /* Pods-Movie Time Demo.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
