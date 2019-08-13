@@ -9,33 +9,44 @@
 import UIKit
 
 class MovieListViewController: UIViewController {
+    
+    // MARK: Properties
+    
+    let viewModel = MovieListViewModel()
+    
+    
+    // MARK: Outlets
+    
+    @IBOutlet weak var mainTableView: MovieListTableView!
+    
+    
+    // MARK: Lifecycle
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
+        initViewController()
+        refreshTableView()
     }
 
+}
 
-    let restApi = RestApi()
+
+extension MovieListViewController {
     
-    @IBAction func getAllMovies(_ sender: Any) {
-        restApi.getMovies(onSuccess: { movies in
-           Log.debug("Get Movies Success")
+    // MARK: Setup & Initialization
+    
+    func initViewController() {
+        self.navigationItem.title = AppConfig.name
+    }
+    
+    func refreshTableView() {
+        viewModel.fetchMovies(onSuccess: { movieCollection in
+            self.mainTableView.data = movieCollection
+            self.mainTableView.reloadData()
         }, onError: { error in
-            Log.debug("Get Movies Error")
-        }, onComplete: {
-            Log.debug("Get Movies Complete")
+            
         })
     }
     
-    @IBAction func getSpecific(_ sender: Any) {
-        restApi.getMovie(byId: 1, onSuccess: { movie in
-            Log.debug("Get Specific Movie Success")
-        }, onError: { error in
-            Log.debug("Get Specific Movie Error")
-        }, onComplete: {
-            Log.debug("Get Specific Movie Complete")
-        })
-    }
 }
 

@@ -12,9 +12,8 @@ struct RestApi {
 
 extension RestApi {
     
-    func getMovies(onSuccess: @escaping (MovieListResponseModel) -> Void,
-                   onError: @escaping(WebServiceError) -> Void,
-                   onComplete: @escaping () -> Void) {
+    func getMovies(onSuccess: @escaping ([MovieResponseModel]) -> Void,
+                   onError: @escaping(WebServiceError) -> Void) {
         webService.request(baseUrl: AppConfig.Api.baseSearchUrl,
                            parameters: [
                                 "term" : "star",
@@ -23,21 +22,18 @@ extension RestApi {
                                 "all" : ""
                             ],
                            onSuccess: onSuccess,
-                           onError: onError,
-                           onComplete: onComplete)
+                           onError: onError)
     }
     
     func getMovie(byId trackId: TrackId,
-                  onSuccess: @escaping (MovieListResponseModel) -> Void,
-                  onError: @escaping(WebServiceError) -> Void,
-                  onComplete: @escaping () -> Void) {
+                  onSuccess: @escaping ([MovieResponseModel]) -> Void,
+                  onError: @escaping(WebServiceError) -> Void) {
         webService.request(baseUrl: AppConfig.Api.baseLookupUrl,
                            parameters: [
                                 "id" : trackId
                             ],
                            onSuccess: onSuccess,
-                           onError: onError,
-                           onComplete: onComplete)
+                           onError: onError)
     }
     
 }

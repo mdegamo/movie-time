@@ -29,9 +29,8 @@ extension WebService {
     
     func request(baseUrl: String,
                   parameters: Parameters? = [:],
-                  onSuccess: @escaping (MovieListResponseModel) -> Void,
-                  onError: @escaping(WebServiceError) -> Void,
-                      onComplete: @escaping () -> Void) {
+                  onSuccess: @escaping ([MovieResponseModel]) -> Void,
+                  onError: @escaping(WebServiceError) -> Void) {
         let dataRequest = WebService.sessionManager
             .request(baseUrl,
                      method: .get,
@@ -42,17 +41,13 @@ extension WebService {
         dataRequest.responseData { response in
             self.handleResponseData(response,
                                     onSuccess: onSuccess,
-                                    onError: onError,
-                                    onComplete: onComplete)
+                                    onError: onError)
         }
     }
     
     func handleResponseData(_ response: DataResponse<Data>,
-                             onSuccess: @escaping (MovieListResponseModel) -> Void,
-                             onError: @escaping(WebServiceError) -> Void,
-                             onComplete: @escaping () -> Void) {
-        Log.debug("Result", response.result)
-        onComplete()
+                             onSuccess: @escaping ([MovieResponseModel]) -> Void,
+                             onError: @escaping(WebServiceError) -> Void) {
         
         guard let statusCode = response.response?.statusCode else {
             Log.error("Can't get status code")
@@ -77,7 +72,7 @@ extension WebService {
                 if model.resultCount == 0 {
                     onError(genericError)
                 } else {
-                    onSuccess(model)
+                    onSuccess(model.results)
                 }
             default:
                 Log.debug("Server error")

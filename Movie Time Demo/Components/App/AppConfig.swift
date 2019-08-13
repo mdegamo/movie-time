@@ -6,10 +6,14 @@
 //  Copyright © 2019 Mark Anthony Degamo. All rights reserved.
 //
 
+import Foundation
+
 struct AppConfig {
     
     // I usually pull the values of these structs from `Bundle.main` which varies
     // per build config, but for this demo I just hardcoded them.
+    
+    static let name = Bundle.main.infoDictionary!["CFBundleDisplayName"] as! String
     
     struct Api {
         static let baseUrl = "https://itunes.apple.com"

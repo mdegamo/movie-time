@@ -12,6 +12,7 @@ struct MovieResponseModel : Decodable {
     
     let id: TrackId?
     let title: String?
+    let artist: String?
     let artworkUrl: String?
     let price: Float?
     let genre: String?
@@ -20,6 +21,7 @@ struct MovieResponseModel : Decodable {
     enum CodingKeys: String, CodingKey {
         case id = "trackId"
         case title = "trackName"
+        case artist = "artistName"
         case artworkUrl = "artworkUrl100"
         case price = "trackPrice"
         case genre = "primaryGenreName"

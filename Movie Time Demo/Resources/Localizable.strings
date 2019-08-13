@@ -7,7 +7,12 @@
 */
 
 "Error" = "Error";
+"Favorites" = "Favorites";
+"Featured" = "Featured";
+"PriceFormat" = "$ %.02f";
 "ServerError" = "ServerError";
+"Unknown" = "Unknown";
+"ViewAll" = "View All";
 
 
 /**

@@ -1,6 +1,6 @@
 source 'https//github.com/CocoaPods/Specs.git'
 
-platform :ios, '12.4'
+platform :ios, '12.0'
 
 target 'Movie Time Demo' do
   use_frameworks!
