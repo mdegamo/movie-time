@@ -8,10 +8,9 @@
 
 import UIKit
 
-protocol MovieListTableViewActionsDelegate {
-    func didEmitViewAllAction(moviesCollection: MoviesCollectionDisplayModel)
-    func didSelectMovie(movie: MovieResponseModel)
-}
+protocol MovieListTableViewActionsDelegate: MovieListTableViewCellActionsDelegate {}
+
+protocol MovieListTableViewRenderDelegate: MovieListTableViewCellRenderDelegate {}
 
 
 class MovieListTableView: UITableView {
@@ -21,6 +20,8 @@ class MovieListTableView: UITableView {
     var data = [MoviesCollectionDisplayModel]()
     
     var actionsDelegate: MovieListTableViewActionsDelegate?
+    
+    var renderDelegate: MovieListTableViewRenderDelegate?
     
     
     // MARK: Setup & Initialization
@@ -57,6 +58,7 @@ extension MovieListTableView: UITableViewDataSource {
         if let cellData = data[safe: indexPath.item] {
             cell.data = cellData
             cell.actionsDelegate = self
+            cell.renderDelegate = self
         }
         
         return cell
@@ -73,6 +75,15 @@ extension MovieListTableView: MovieListTableViewCellActionsDelegate {
     
     func didSelectMovie(movie: MovieResponseModel) {
         actionsDelegate?.didSelectMovie(movie: movie)
+    }
+    
+}
+
+
+extension MovieListTableView: MovieListTableViewRenderDelegate {
+    
+    func didRenderThumb(cell: MovieThumbsCollectionViewCell, movie: MovieResponseModel) {
+        renderDelegate?.didRenderThumb(cell: cell, movie: movie)
     }
     
 }

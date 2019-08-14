@@ -12,6 +12,8 @@ protocol MovieListThumbsActionsDelegate {
     func didSelectMovie(movie: MovieResponseModel)
 }
 
+protocol MovieListThumbsRenderDelegate: MovieThumbsCollectionViewCellRenderDelegate {}
+
 
 class MovieListThumbsCollectionView: UICollectionView {
     
@@ -20,6 +22,8 @@ class MovieListThumbsCollectionView: UICollectionView {
     var data: [MovieResponseModel]!
     
     var actionsDelegate: MovieListThumbsActionsDelegate?
+    
+    var renderDelegate: MovieListThumbsRenderDelegate?
     
     // MARK: Setup & Initialization
     
@@ -64,6 +68,7 @@ extension MovieListThumbsCollectionView: UICollectionViewDataSource {
 
         if let cellData = data[safe: indexPath.item] {
             cell.data = cellData
+            renderDelegate?.didRenderThumb(cell: cell, movie: cellData)
         }
         
         return cell

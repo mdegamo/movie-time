@@ -17,7 +17,11 @@ class MovieCollectionListViewController: UIViewController {
     
     // MARK: Outlets
     
-    @IBOutlet weak var mainCollectionView: MovieCollectionCollectionView!
+    @IBOutlet weak var mainCollectionView: MovieCollectionCollectionView! {
+        didSet {
+            mainCollectionView.renderDelegate = self
+        }
+    }
     
     
     // MARK: Overrides
@@ -70,4 +74,13 @@ extension MovieCollectionListViewController: MovieCollectionActionsDelegate {
         performSegue(withIdentifier: R.segue.movieCollectionListViewController.movieCollectionToMovieHeroSegueIdentifier.identifier, sender: movie)
     }
 
+}
+
+
+extension MovieCollectionListViewController: MovieCollectionRenderDelegate {
+    
+    func didRenderThumb(cell: MovieThumbsCollectionViewCell, movie: MovieResponseModel) {
+        loadThumbImage(cell: cell, movie: movie)
+    }
+    
 }

@@ -12,6 +12,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="MovieThumbView" customModule="Movie_Time_Demo" customModuleProvider="target">
             <connections>
+                <outlet property="activityIndicatorView" destination="pus-fU-KpE" id="jdP-fw-JCl"/>
                 <outlet property="artistLabel" destination="2LK-r7-0Ig" id="s0e-1q-Seu"/>
                 <outlet property="contentView" destination="iN0-l3-epB" id="Csp-Ri-QNI"/>
                 <outlet property="favoriteButton" destination="UWX-ae-zdY" id="hnM-ce-nZ0"/>
@@ -34,26 +35,6 @@
                         <constraint firstAttribute="width" priority="750" constant="150" id="pA1-Me-c3U"/>
                     </constraints>
                 </imageView>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UWX-ae-zdY">
-                    <rect key="frame" x="150" y="204" width="40" height="40"/>
-                    <constraints>
-                        <constraint firstAttribute="width" constant="40" id="CvP-2k-xbR"/>
-                        <constraint firstAttribute="height" constant="40" id="nPO-MU-T6T"/>
-                    </constraints>
-                    <state key="normal" title="Button"/>
-                </button>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Movie Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="z5H-8F-7Qe">
-                    <rect key="frame" x="0.0" y="252" width="200" height="21"/>
-                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                    <nil key="textColor"/>
-                    <nil key="highlightedColor"/>
-                </label>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Artist Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2LK-r7-0Ig">
-                    <rect key="frame" x="0.0" y="275" width="200" height="21"/>
-                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                    <nil key="textColor"/>
-                    <nil key="highlightedColor"/>
-                </label>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xpO-Gd-Tut">
                     <rect key="frame" x="8" y="212" width="60" height="24"/>
                     <subviews>
@@ -73,6 +54,29 @@
                         <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="60" id="nwl-Bh-0um"/>
                     </constraints>
                 </view>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UWX-ae-zdY">
+                    <rect key="frame" x="150" y="204" width="40" height="40"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="40" id="CvP-2k-xbR"/>
+                        <constraint firstAttribute="height" constant="40" id="nPO-MU-T6T"/>
+                    </constraints>
+                    <state key="normal" title="Button"/>
+                </button>
+                <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="pus-fU-KpE">
+                    <rect key="frame" x="90" y="134" width="20" height="20"/>
+                </activityIndicatorView>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Movie Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="z5H-8F-7Qe">
+                    <rect key="frame" x="0.0" y="252" width="200" height="21"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Artist Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2LK-r7-0Ig">
+                    <rect key="frame" x="0.0" y="275" width="200" height="21"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
@@ -85,12 +89,14 @@
                 <constraint firstItem="U2O-Nc-S9J" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" id="Rbk-eS-Grj"/>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="2LK-r7-0Ig" secondAttribute="bottom" priority="250" id="VuX-8L-1Xn"/>
                 <constraint firstItem="U2O-Nc-S9J" firstAttribute="width" secondItem="iN0-l3-epB" secondAttribute="width" id="ZNH-dC-EGG"/>
+                <constraint firstItem="pus-fU-KpE" firstAttribute="centerX" secondItem="U2O-Nc-S9J" secondAttribute="centerX" id="h8T-Uf-wvP"/>
                 <constraint firstItem="z5H-8F-7Qe" firstAttribute="trailing" secondItem="U2O-Nc-S9J" secondAttribute="trailing" id="hXD-hO-yT7"/>
                 <constraint firstItem="UWX-ae-zdY" firstAttribute="trailing" secondItem="U2O-Nc-S9J" secondAttribute="trailing" constant="-10" id="jSe-tA-5su"/>
                 <constraint firstItem="z5H-8F-7Qe" firstAttribute="leading" secondItem="U2O-Nc-S9J" secondAttribute="leading" id="lwQ-IM-DVt"/>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="U2O-Nc-S9J" secondAttribute="trailing" id="lwd-lN-2F5"/>
                 <constraint firstItem="UWX-ae-zdY" firstAttribute="centerY" secondItem="xpO-Gd-Tut" secondAttribute="centerY" id="mLW-s5-MxI"/>
                 <constraint firstItem="2LK-r7-0Ig" firstAttribute="trailing" secondItem="z5H-8F-7Qe" secondAttribute="trailing" id="orZ-11-80H"/>
+                <constraint firstItem="pus-fU-KpE" firstAttribute="centerY" secondItem="U2O-Nc-S9J" secondAttribute="centerY" id="qAI-Jp-fbp"/>
             </constraints>
             <nil key="simulatedTopBarMetrics"/>
             <nil key="simulatedBottomBarMetrics"/>

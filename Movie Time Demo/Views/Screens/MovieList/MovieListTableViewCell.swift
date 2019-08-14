@@ -9,10 +9,11 @@
 import UIKit
 
 
-protocol MovieListTableViewCellActionsDelegate {
+protocol MovieListTableViewCellActionsDelegate: MovieListThumbsActionsDelegate {
     func didEmitViewAllAction(moviesCollection: MoviesCollectionDisplayModel)
-    func didSelectMovie(movie: MovieResponseModel)
 }
+
+protocol MovieListTableViewCellRenderDelegate: MovieListThumbsRenderDelegate {}
 
 
 class MovieListTableViewCell: UITableViewCell {
@@ -28,6 +29,8 @@ class MovieListTableViewCell: UITableViewCell {
     }
     
     var actionsDelegate: MovieListTableViewCellActionsDelegate?
+    
+    var renderDelegate: MovieListTableViewCellRenderDelegate?
     
     
     // MARK: Outlets
@@ -48,6 +51,7 @@ class MovieListTableViewCell: UITableViewCell {
     @IBOutlet weak var thumbsCollectionView: MovieListThumbsCollectionView! {
         didSet {
             thumbsCollectionView.actionsDelegate = self
+            thumbsCollectionView.renderDelegate = self
         }
     }
     
@@ -65,6 +69,15 @@ extension MovieListTableViewCell: MovieListThumbsActionsDelegate {
     
     func didSelectMovie(movie: MovieResponseModel) {
         actionsDelegate?.didSelectMovie(movie: movie)
+    }
+    
+}
+
+
+extension MovieListTableViewCell: MovieListTableViewCellRenderDelegate {
+    
+    func didRenderThumb(cell: MovieThumbsCollectionViewCell, movie: MovieResponseModel) {
+        renderDelegate?.didRenderThumb(cell: cell, movie: movie)
     }
     
 }

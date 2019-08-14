@@ -22,6 +22,7 @@ class MovieThumbView: UIView {
         didSet {
             thumbnailImageView.layer.cornerRadius = CGFloat(15)
             thumbnailImageView.clipsToBounds = true
+            thumbnailImageView.contentMode = .scaleAspectFill
         }
     }
     
@@ -38,6 +39,12 @@ class MovieThumbView: UIView {
             priceLabel.font = .boldSystemFont(ofSize: 13)
             priceLabel.textColor = .blue
             priceLabel.textAlignment = .center
+        }
+    }
+    
+    @IBOutlet weak var activityIndicatorView: UIActivityIndicatorView! {
+        didSet {
+            activityIndicatorView.hidesWhenStopped = true
         }
     }
     
@@ -91,6 +98,7 @@ extension MovieThumbView {
         backgroundColor = .clear
         let view = initContentView(fromNibNamed: R.nib.movieThumbView.name)
         contentView = view
+        activityIndicatorView.startAnimating()
     }
     
 }

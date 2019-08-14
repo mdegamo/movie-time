@@ -7,6 +7,7 @@
 //
 
 import Alamofire
+import AlamofireImage
 
 struct WebService {
     private let genericError: WebServiceError = (
@@ -31,17 +32,43 @@ extension WebService {
                   parameters: Parameters? = [:],
                   onSuccess: @escaping ([MovieResponseModel]) -> Void,
                   onError: @escaping(WebServiceError) -> Void) {
-        let dataRequest = WebService.sessionManager
-            .request(baseUrl,
-                     method: .get,
-                     parameters: parameters,
-                     encoding: URLEncoding.default)
-        
-        Log.debug("cURL Output", dataRequest)
-        dataRequest.responseData { response in
-            self.handleResponseData(response,
-                                    onSuccess: onSuccess,
-                                    onError: onError)
+        WebService.sessionManager
+            .request(
+                baseUrl,
+                method: .get,
+                parameters: parameters,
+                encoding: URLEncoding.default
+            )
+            .responseData { response in
+                self.handleResponseData(response,
+                                        onSuccess: onSuccess,
+                                        onError: onError)
+            }
+    }
+    
+    func getImage(from url: String,
+                  onSuccess: @escaping (UIImage) -> Void,
+                  onError: ((WebServiceError) -> Void)? = nil) {
+        WebService.sessionManager.request(url).responseImage { response in
+            guard let statusCode = response.response?.statusCode else {
+                Log.error("Can't get status code")
+                onError?(self.genericError)
+                return
+            }
+            
+            switch statusCode {
+            case 200...299:
+                if let image = response.result.value {
+                    onSuccess(image)
+                } else {
+                    onError?(self.genericError)
+                }
+            default:
+                onError?((
+                    title: R.string.localizable.serverError(),
+                    detail: R.string.localizable.serverErrorMessage()
+                ))
+            }
         }
     }
     
@@ -66,16 +93,13 @@ extension WebService {
             
             switch statusCode {
             case 200...299:
-                Log.debug("Success Valid Data", validData)
                 let model = try decoder.decode(MovieListResponseModel.self, from: validData)
-                Log.debug("Success", model)
                 if model.resultCount == 0 {
                     onError(genericError)
                 } else {
                     onSuccess(model.results)
                 }
             default:
-                Log.debug("Server error")
                 onError((
                     title: R.string.localizable.serverError(),
                     detail: R.string.localizable.serverErrorMessage()

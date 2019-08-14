@@ -56,6 +56,7 @@ extension MovieListViewController {
             navBar.shadowImage = UIImage()
         }
         mainTableView.actionsDelegate = self
+        mainTableView.renderDelegate = self
     }
     
     func refreshTableView() {
@@ -79,6 +80,15 @@ extension MovieListViewController: MovieListTableViewActionsDelegate {
     
     func didSelectMovie(movie: MovieResponseModel) {
         performSegue(withIdentifier: R.segue.movieListViewController.movieListToMovieHeroSegueIdentifier.identifier, sender: movie)
+    }
+    
+}
+
+
+extension MovieListViewController: MovieListTableViewRenderDelegate {
+    
+    func didRenderThumb(cell: MovieThumbsCollectionViewCell, movie: MovieResponseModel) {
+        loadThumbImage(cell: cell, movie: movie)
     }
     
 }

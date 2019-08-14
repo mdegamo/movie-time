@@ -12,6 +12,8 @@ protocol MovieCollectionActionsDelegate {
     func didSelectMovie(movie: MovieResponseModel)
 }
 
+protocol MovieCollectionRenderDelegate: MovieThumbsCollectionViewCellRenderDelegate {}
+
 
 class MovieCollectionCollectionView: UICollectionView {
     
@@ -20,6 +22,8 @@ class MovieCollectionCollectionView: UICollectionView {
     var data: [MovieResponseModel]!
     
     var actionsDelegate: MovieCollectionActionsDelegate?
+    
+    var renderDelegate: MovieCollectionRenderDelegate?
     
     let padding = CGFloat(16)
     
@@ -66,6 +70,7 @@ extension MovieCollectionCollectionView: UICollectionViewDataSource {
         
         if let cellData = data[safe: indexPath.item] {
             cell.data = cellData
+            renderDelegate?.didRenderThumb(cell: cell, movie: cellData)
         }
         
         return cell
@@ -92,8 +97,6 @@ extension MovieCollectionCollectionView: UICollectionViewDelegateFlowLayout {
                         layout collectionViewLayout: UICollectionViewLayout,
                         sizeForItemAt indexPath: IndexPath) -> CGSize {
         let heightAddOn = CGFloat(50)
-        
-        Log.debug("XX Screen Width: \(collectionView.frame.size.width)")
         
         func calcWidth(byItemCount count: Int) -> CGFloat {
             let divisor = CGFloat(count)

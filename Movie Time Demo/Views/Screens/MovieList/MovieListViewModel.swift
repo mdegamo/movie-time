@@ -8,18 +8,11 @@
 
 class MovieListViewModel {
     
-    let restApi = RestApi()
-    
-}
-
-
-extension MovieListViewModel {
-    
     func fetchMovies(onSuccess: @escaping ([MoviesCollectionDisplayModel]) -> Void,
                      onError: @escaping (WebServiceError) -> Void) {
         var collection = [MoviesCollectionDisplayModel]()
         
-        restApi.getMovies(onSuccess: { movies in
+        RestApi.shared.getMovies(onSuccess: { movies in
             let favoriteMovies = self.getFavoriteMovies(movies)
             if favoriteMovies.movies.count > 0 {
                collection.append(favoriteMovies)

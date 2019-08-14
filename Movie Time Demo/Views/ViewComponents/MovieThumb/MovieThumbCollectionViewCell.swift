@@ -8,6 +8,32 @@
 
 import UIKit
 
+protocol MovieThumbsCollectionViewCellRenderDelegate {
+    func didRenderThumb(cell: MovieThumbsCollectionViewCell, movie: MovieResponseModel)
+}
+
+extension MovieThumbsCollectionViewCellRenderDelegate {
+    
+    func loadThumbImage(cell: MovieThumbsCollectionViewCell,
+                        movie: MovieResponseModel) {
+        cell.thumbView.thumbnailImageView.image = nil
+        cell.thumbView.activityIndicatorView.startAnimating()
+
+        RestApi.shared.getThumbnail(
+            for: movie,
+            onSuccess: { image in
+                cell.thumbView.activityIndicatorView.stopAnimating()
+                cell.thumbView.thumbnailImageView.image = image
+            },
+            onError: { _ in
+                cell.thumbView.activityIndicatorView.stopAnimating()
+                #warning("Load placeholder image")
+            })
+    }
+    
+}
+
+
 class MovieThumbsCollectionViewCell: UICollectionViewCell {
     
     // MARK: Properties
