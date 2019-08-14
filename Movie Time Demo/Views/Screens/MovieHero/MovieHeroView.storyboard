@@ -90,12 +90,23 @@
                                             <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="JSd-an-Rau">
                                                 <rect key="frame" x="197" y="200" width="20" height="20"/>
                                             </activityIndicatorView>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fWK-aH-g3R">
+                                                <rect key="frame" x="358" y="344" width="40" height="40"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="40" id="JCU-ee-nFE"/>
+                                                    <constraint firstAttribute="height" constant="40" id="Mid-4E-0y9"/>
+                                                </constraints>
+                                                <connections>
+                                                    <action selector="didTapFavoriteButton:" destination="M5L-Xr-HnL" eventType="touchUpInside" id="U9P-Jp-CvT"/>
+                                                </connections>
+                                            </button>
                                         </subviews>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
                                             <constraint firstAttribute="trailing" secondItem="cr8-nN-7Jv" secondAttribute="trailing" id="2Bv-Xd-31V"/>
                                             <constraint firstAttribute="trailing" secondItem="MVE-Xy-RMj" secondAttribute="trailing" constant="16" id="4rb-Od-xVj"/>
                                             <constraint firstItem="xT3-l0-S15" firstAttribute="leading" secondItem="FbH-Ei-8zn" secondAttribute="leading" constant="16" id="5Sh-gf-7eg"/>
+                                            <constraint firstItem="fWK-aH-g3R" firstAttribute="trailing" secondItem="cr8-nN-7Jv" secondAttribute="trailing" constant="-16" id="B1a-hS-uBb"/>
                                             <constraint firstItem="JSd-an-Rau" firstAttribute="centerX" secondItem="0Rg-3u-3ce" secondAttribute="centerX" id="DGG-L4-XJh"/>
                                             <constraint firstItem="JSd-an-Rau" firstAttribute="centerY" secondItem="0Rg-3u-3ce" secondAttribute="centerY" id="Dte-dM-WUQ"/>
                                             <constraint firstItem="Xh6-Wt-qyW" firstAttribute="leading" secondItem="cr8-nN-7Jv" secondAttribute="leading" constant="16" id="Dxi-Q6-bIu"/>
@@ -113,6 +124,7 @@
                                             <constraint firstItem="0Rg-3u-3ce" firstAttribute="top" secondItem="cr8-nN-7Jv" secondAttribute="top" constant="50" id="W66-yf-JRT"/>
                                             <constraint firstItem="0Rg-3u-3ce" firstAttribute="bottom" secondItem="cr8-nN-7Jv" secondAttribute="bottom" constant="-30" id="X0r-sv-BR6"/>
                                             <constraint firstItem="cr8-nN-7Jv" firstAttribute="top" secondItem="FbH-Ei-8zn" secondAttribute="top" id="XoN-Js-Yqd"/>
+                                            <constraint firstItem="fWK-aH-g3R" firstAttribute="bottom" secondItem="cr8-nN-7Jv" secondAttribute="bottom" constant="-16" id="Yua-bW-6ee"/>
                                             <constraint firstItem="MVE-Xy-RMj" firstAttribute="leading" secondItem="FbH-Ei-8zn" secondAttribute="leading" constant="16" id="Z1a-82-SYI"/>
                                             <constraint firstAttribute="trailing" secondItem="2SR-hp-wVZ" secondAttribute="trailing" constant="16" id="alt-am-L4e"/>
                                             <constraint firstAttribute="trailing" secondItem="axo-ze-ZoX" secondAttribute="trailing" constant="16" id="hwJ-sg-BSQ"/>
@@ -163,6 +175,7 @@
                         <outlet property="artworkImage" destination="0Rg-3u-3ce" id="AAr-y7-SO8"/>
                         <outlet property="backgroundImage" destination="cr8-nN-7Jv" id="JVG-J9-Sjg"/>
                         <outlet property="dismissButton" destination="alx-s9-EQp" id="rfo-DL-89H"/>
+                        <outlet property="favoriteButton" destination="fWK-aH-g3R" id="ebK-FL-ja9"/>
                         <outlet property="genreLabel" destination="2SR-hp-wVZ" id="L2Q-VJ-5pD"/>
                         <outlet property="genreNameLabel" destination="axo-ze-ZoX" id="EEb-PY-Yti"/>
                         <outlet property="longDescriptionLabel" destination="BCQ-wM-R4S" id="yWa-r7-hkU"/>

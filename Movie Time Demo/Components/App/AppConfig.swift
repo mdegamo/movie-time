@@ -18,6 +18,8 @@ struct AppConfig {
     
     static let name = Bundle.main.infoDictionary!["CFBundleDisplayName"] as! String
     
+    static let identity = Bundle.main.bundleIdentifier ?? "com.mdegamo.Movie-Time-Demo"
+    
     struct Api {
         static let baseUrl = "https://itunes.apple.com"
         static let baseSearchUrl = "\(baseUrl)/search"

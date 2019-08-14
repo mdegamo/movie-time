@@ -29,8 +29,10 @@ class MovieListViewModel {
     }
     
     func getFavoriteMovies(_ movies: [MovieResponseModel]) -> MoviesCollectionDisplayModel {
-        #warning("Fetch favorites from coredata")
-        var favoriteMovies = [MovieResponseModel]()
+        let favoriteIds = FavoriteStore.getFavorites()
+        let favoriteMovies = movies.filter {
+            favoriteIds.contains($0.id ?? -9999)
+        }
         
         return MoviesCollectionDisplayModel(collectionName: R.string.localizable.favorites(),
                                             movies: favoriteMovies)

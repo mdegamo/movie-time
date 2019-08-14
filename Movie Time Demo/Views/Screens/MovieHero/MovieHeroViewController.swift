@@ -73,6 +73,14 @@ class MovieHeroViewController: UIViewController {
         }
     }
     
+    @IBOutlet weak var favoriteButton: UIButton! {
+        didSet {
+            favoriteButton.layer.cornerRadius = CGFloat(20)
+            favoriteButton.clipsToBounds = true
+            favoriteButton.backgroundColor = .white
+        }
+    }
+    
     @IBOutlet weak var titleLabel: UILabel! {
         didSet {
             titleLabel.font = .boldSystemFont(ofSize: 32)
@@ -120,6 +128,28 @@ class MovieHeroViewController: UIViewController {
     
     @IBAction func didTapDismissButton(_ sender: Any) {
         self.dismiss(animated: true, completion: nil)
+    }
+    
+    @IBAction func didTapFavoriteButton(_ sender: Any) {
+        favoriteButton.isEnabled = false
+        
+        if let trackId = viewModel.data.id {
+            if FavoriteStore.getFavorites().contains(trackId) {
+                if FavoriteStore.removeFromFavorites(trackId) {
+                    favoriteButton.backgroundColor = .white
+                } else {
+                    favoriteButton.backgroundColor = .red
+                }
+            } else {
+                if FavoriteStore.addToFavorites(trackId) {
+                    favoriteButton.backgroundColor = .red
+                } else {
+                    favoriteButton.backgroundColor = .white
+                }
+            }
+        }
+        
+        favoriteButton.isEnabled = true
     }
     
     
@@ -170,6 +200,11 @@ extension MovieHeroViewController {
         artistLabel.text = viewModel.data.artist
         genreLabel.text = viewModel.data.genre
         longDescriptionLabel.text = viewModel.data.longDescription
+        
+        if let trackId = viewModel.data.id,
+            FavoriteStore.getFavorites().contains(trackId) {
+            favoriteButton.backgroundColor = .red
+        }
         
         loadArtwork()
     }

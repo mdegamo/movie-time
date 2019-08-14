@@ -37,8 +37,10 @@ class MovieListViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         initViewController()
         refreshTableView()
+        setupNotificationObservers()
     }
 
 }
@@ -62,6 +64,23 @@ extension MovieListViewController {
         }
         mainTableView.actionsDelegate = self
         mainTableView.renderDelegate = self
+    }
+    
+    func setupNotificationObservers() {
+        let center = NotificationCenter.default
+        
+        center.addObserver(
+            self,
+            selector: #selector(didReceiveUpdateFavorites(notification:)),
+            name: Notification.Name(rawValue: ObserverNotificationKeys.didUpdateFavoritesKey),
+            object: nil)
+    }
+        
+        
+    // MARK: Methods
+    
+    @objc func didReceiveUpdateFavorites(notification: NSNotification) {
+        refreshTableView()
     }
     
     func refreshTableView() {

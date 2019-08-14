@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		48EA03B8965B2784BE5A513D /* Pods_Movie_Time_Demo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1E21E8297393CF1584CAD70A /* Pods_Movie_Time_Demo.framework */; };
+		E433184D23047D150078EC25 /* FavoriteStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = E433184C23047D150078EC25 /* FavoriteStore.swift */; };
+		E4331850230487000078EC25 /* ObserverNotificationKeys.swift in Sources */ = {isa = PBXBuildFile; fileRef = E433184F230487000078EC25 /* ObserverNotificationKeys.swift */; };
 		E439785A2302BE4100050DD1 /* MovieCollectionList.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E43978592302BE4100050DD1 /* MovieCollectionList.storyboard */; };
 		E439785C2302BE5100050DD1 /* MovieCollectionListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E439785B2302BE5100050DD1 /* MovieCollectionListViewController.swift */; };
 		E439785E2302C84200050DD1 /* MovieListThumbsCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E439785D2302C84200050DD1 /* MovieListThumbsCollectionView.swift */; };
@@ -33,7 +35,6 @@
 		E4DDFEE0230155E700922BCF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4DDFEDF230155E700922BCF /* AppDelegate.swift */; };
 		E4DDFEE2230155E700922BCF /* MovieListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4DDFEE1230155E700922BCF /* MovieListViewController.swift */; };
 		E4DDFEE5230155E700922BCF /* MovieList.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E4DDFEE3230155E700922BCF /* MovieList.storyboard */; };
-		E4DDFEE8230155E700922BCF /* Movie_Time_Demo.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = E4DDFEE6230155E700922BCF /* Movie_Time_Demo.xcdatamodeld */; };
 		E4DDFEEA230155E900922BCF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E4DDFEE9230155E900922BCF /* Assets.xcassets */; };
 		E4DDFEED230155E900922BCF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E4DDFEEB230155E900922BCF /* LaunchScreen.storyboard */; };
 		E4FFA55D230245EC00E0158E /* MoviesCollectionDisplayModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4FFA55C230245EC00E0158E /* MoviesCollectionDisplayModel.swift */; };
@@ -45,6 +46,8 @@
 /* Begin PBXFileReference section */
 		1E21E8297393CF1584CAD70A /* Pods_Movie_Time_Demo.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Movie_Time_Demo.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		3E62E6CB7777E31010D261F0 /* Pods-Movie Time Demo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Movie Time Demo.release.xcconfig"; path = "Target Support Files/Pods-Movie Time Demo/Pods-Movie Time Demo.release.xcconfig"; sourceTree = "<group>"; };
+		E433184C23047D150078EC25 /* FavoriteStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteStore.swift; sourceTree = "<group>"; };
+		E433184F230487000078EC25 /* ObserverNotificationKeys.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ObserverNotificationKeys.swift; sourceTree = "<group>"; };
 		E43978592302BE4100050DD1 /* MovieCollectionList.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = MovieCollectionList.storyboard; sourceTree = "<group>"; };
 		E439785B2302BE5100050DD1 /* MovieCollectionListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieCollectionListViewController.swift; sourceTree = "<group>"; };
 		E439785D2302C84200050DD1 /* MovieListThumbsCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieListThumbsCollectionView.swift; sourceTree = "<group>"; };
@@ -71,7 +74,6 @@
 		E4DDFEDF230155E700922BCF /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E4DDFEE1230155E700922BCF /* MovieListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieListViewController.swift; sourceTree = "<group>"; };
 		E4DDFEE4230155E700922BCF /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/MovieList.storyboard; sourceTree = "<group>"; };
-		E4DDFEE7230155E700922BCF /* Movie_Time_Demo.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Movie_Time_Demo.xcdatamodel; sourceTree = "<group>"; };
 		E4DDFEE9230155E900922BCF /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		E4DDFEEC230155E900922BCF /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		E4DDFEEE230155E900922BCF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -94,6 +96,22 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		E433184B23047D060078EC25 /* Repository */ = {
+			isa = PBXGroup;
+			children = (
+				E433184C23047D150078EC25 /* FavoriteStore.swift */,
+			);
+			path = Repository;
+			sourceTree = "<group>";
+		};
+		E433184E230486BE0078EC25 /* Notifications */ = {
+			isa = PBXGroup;
+			children = (
+				E433184F230487000078EC25 /* ObserverNotificationKeys.swift */,
+			);
+			path = Notifications;
+			sourceTree = "<group>";
+		};
 		E43978582302BE3000050DD1 /* MovieCollectionList */ = {
 			isa = PBXGroup;
 			children = (
@@ -119,7 +137,6 @@
 			isa = PBXGroup;
 			children = (
 				E4DDFEE9230155E900922BCF /* Assets.xcassets */,
-				E4DDFEE6230155E700922BCF /* Movie_Time_Demo.xcdatamodeld */,
 				E4AA8C1B230191FC00A5FAD5 /* Localizable.strings */,
 			);
 			path = Resources;
@@ -170,6 +187,8 @@
 		E4AA8C07230161EA00A5FAD5 /* Components */ = {
 			isa = PBXGroup;
 			children = (
+				E433184E230486BE0078EC25 /* Notifications */,
+				E433184B23047D060078EC25 /* Repository */,
 				E4AA8C1223016B4400A5FAD5 /* TypeAliases.swift */,
 				E4AA8C10230165E500A5FAD5 /* Log.swift */,
 				E4AA8C0D230163AA00A5FAD5 /* App */,
@@ -461,12 +480,12 @@
 				E4AA8C0F230163B700A5FAD5 /* AppConfig.swift in Sources */,
 				E445A9542303B4CE004EAA26 /* MovieHeroViewController.swift in Sources */,
 				E4AA8C18230175A600A5FAD5 /* MovieResponseModel.swift in Sources */,
+				E433184D23047D150078EC25 /* FavoriteStore.swift in Sources */,
 				E4AA8C11230165E500A5FAD5 /* Log.swift in Sources */,
 				E4DDFEE2230155E700922BCF /* MovieListViewController.swift in Sources */,
 				E4DDFEE0230155E700922BCF /* AppDelegate.swift in Sources */,
 				E4AA8C0C2301621900A5FAD5 /* RestApi.swift in Sources */,
 				E445A94F2303A4EB004EAA26 /* MovieCollectionCollectionView.swift in Sources */,
-				E4DDFEE8230155E700922BCF /* Movie_Time_Demo.xcdatamodeld in Sources */,
 				E4AA8C042301608E00A5FAD5 /* R.generated.swift in Sources */,
 				E4AA8C1323016B4400A5FAD5 /* TypeAliases.swift in Sources */,
 				E439785E2302C84200050DD1 /* MovieListThumbsCollectionView.swift in Sources */,
@@ -477,6 +496,7 @@
 				E439785C2302BE5100050DD1 /* MovieCollectionListViewController.swift in Sources */,
 				E4AA8C1A230175C200A5FAD5 /* MovieListResponseModel.swift in Sources */,
 				E4FFA55D230245EC00E0158E /* MoviesCollectionDisplayModel.swift in Sources */,
+				E4331850230487000078EC25 /* ObserverNotificationKeys.swift in Sources */,
 				E4CB5DBB230375DC00590396 /* MovieCollectionListViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -681,19 +701,6 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
-
-/* Begin XCVersionGroup section */
-		E4DDFEE6230155E700922BCF /* Movie_Time_Demo.xcdatamodeld */ = {
-			isa = XCVersionGroup;
-			children = (
-				E4DDFEE7230155E700922BCF /* Movie_Time_Demo.xcdatamodel */,
-			);
-			currentVersion = E4DDFEE7230155E700922BCF /* Movie_Time_Demo.xcdatamodel */;
-			path = Movie_Time_Demo.xcdatamodeld;
-			sourceTree = "<group>";
-			versionGroupType = wrapper.xcdatamodel;
-		};
-/* End XCVersionGroup section */
 	};
 	rootObject = E4DDFED4230155E700922BCF /* Project object */;
 }

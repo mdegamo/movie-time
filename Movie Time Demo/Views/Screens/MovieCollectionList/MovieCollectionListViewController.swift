@@ -38,8 +38,10 @@ class MovieCollectionListViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         initViewController()
         refreshCollectionView()
+        setupNotificationObservers()
     }
     
     override func viewWillTransition(to size: CGSize,
@@ -58,6 +60,34 @@ extension MovieCollectionListViewController {
     func initViewController() {
         self.navigationItem.title = viewModel.data.collectionName
         mainCollectionView.actionsDelegate = self
+    }
+    
+    func setupNotificationObservers() {
+        let center = NotificationCenter.default
+        
+        center.addObserver(
+            self,
+            selector: #selector(didReceiveUpdateFavorites(notification:)),
+            name: Notification.Name(rawValue: ObserverNotificationKeys.didUpdateFavoritesKey),
+            object: nil)
+    }
+    
+    
+    // MARK: Methods
+    
+    @objc func didReceiveUpdateFavorites(notification: NSNotification) {
+        if viewModel.data.collectionName != R.string.localizable.favorites() {
+            return
+        }
+        
+        let favorites = FavoriteStore.getFavorites()
+        if favorites.count == 0 {
+            navigationController?.popViewController(animated: true)
+        } else {
+            let movies = viewModel.data.movies.filter { favorites.contains($0.id ?? -9999) }
+            mainCollectionView.data = movies
+            mainCollectionView.reloadData()
+        }
     }
     
     func refreshCollectionView() {
