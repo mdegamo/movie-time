@@ -50,7 +50,7 @@
                     <navigationItem key="navigationItem" id="pOb-qw-4q1"/>
                     <connections>
                         <outlet property="mainCollectionView" destination="zun-BR-YWi" id="Xku-4F-m0g"/>
-                        <segue destination="bZk-uR-TY7" kind="show" identifier="MovieCollectionToMovieHero.SegueIdentifier" id="FpY-Pp-G7T"/>
+                        <segue destination="bZk-uR-TY7" kind="showDetail" identifier="MovieCollectionToMovieHero.SegueIdentifier" id="FpY-Pp-G7T"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="DJg-Fn-TCO" userLabel="First Responder" sceneMemberID="firstResponder"/>

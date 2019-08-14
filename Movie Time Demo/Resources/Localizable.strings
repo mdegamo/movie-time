@@ -6,9 +6,11 @@
   Copyright © 2019 Mark Anthony Degamo. All rights reserved.
 */
 
+"Description" = "Description";
 "Error" = "Error";
 "Favorites" = "Favorites";
 "Featured" = "Featured";
+"Genre" = "Genre";
 "PriceFormat" = "$ %.02f";
 "ServerError" = "ServerError";
 "Unknown" = "Unknown";

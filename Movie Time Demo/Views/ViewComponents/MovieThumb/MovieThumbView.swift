@@ -48,8 +48,6 @@ class MovieThumbView: UIView {
         }
     }
     
-    @IBOutlet weak var favoriteButton: UIButton!
-    
     @IBOutlet weak var titleLabel: UILabel! {
         didSet {
             titleLabel.font = .systemFont(ofSize: 15)

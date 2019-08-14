@@ -44,7 +44,7 @@ class MovieListTableViewCell: UITableViewCell {
     @IBOutlet weak var viewAllButton: UIButton! {
         didSet {
             viewAllButton.setTitle(R.string.localizable.viewAll(), for: .normal)
-            viewAllButton.titleLabel?.font = UIFont.systemFont(ofSize: UIFont.smallSystemFontSize)
+            viewAllButton.titleLabel?.font = UIFont.systemFont(ofSize: 13)
         }
     }
     

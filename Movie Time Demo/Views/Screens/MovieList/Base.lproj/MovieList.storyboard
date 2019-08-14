@@ -99,7 +99,7 @@
                     <connections>
                         <outlet property="mainTableView" destination="VLR-3z-7pu" id="fab-A0-KI2"/>
                         <segue destination="tCE-dg-JYk" kind="show" identifier="MovieListToMovieCollection.SegueIdentifier" id="ivc-Bw-GGo"/>
-                        <segue destination="Adk-qk-iAZ" kind="show" identifier="MovieListToMovieHero.SegueIdentifier" id="4e6-Lb-a0B"/>
+                        <segue destination="Adk-qk-iAZ" kind="showDetail" identifier="MovieListToMovieHero.SegueIdentifier" id="4e6-Lb-a0B"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
