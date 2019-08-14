@@ -46,12 +46,13 @@ extension RestApi {
                            onError: onError)
     }
     
-    func getThumbnail(for model: MovieResponseModel,
-                      onSuccess: @escaping (UIImage) -> Void,
-                      onError: ((WebServiceError) -> Void)? = nil) {
+    private func getImage(for model: MovieResponseModel,
+                          withSize size: Int,
+                          onSuccess: @escaping (UIImage) -> Void,
+                          onError: ((WebServiceError) -> Void)? = nil) {
         if let url = model.artworkUrl {
             if let index = url.lastIndex(of: "/") {
-                let betterThumbUrl = "\(url[..<index])/300x300.jpg"
+                let betterThumbUrl = "\(url[..<index])/\(size)x\(size).jpg"
                 webService.getImage(
                     from: betterThumbUrl,
                     onSuccess: onSuccess,
@@ -59,13 +60,25 @@ extension RestApi {
                         self.webService.getImage(from: url,
                                                  onSuccess: onSuccess,
                                                  onError: onError)
-                    })
+                })
             } else {
                 webService.getImage(from: url,
                                     onSuccess: onSuccess,
                                     onError: onError)
             }
         }
+    }
+    
+    func getThumbnail(for model: MovieResponseModel,
+                      onSuccess: @escaping (UIImage) -> Void,
+                      onError: ((WebServiceError) -> Void)? = nil) {
+        getImage(for: model, withSize: 300, onSuccess: onSuccess, onError: onError)
+    }
+    
+    func getLargeArtwork(for model: MovieResponseModel,
+                         onSuccess: @escaping (UIImage) -> Void,
+                         onError: ((WebServiceError) -> Void)? = nil) {
+        getImage(for: model, withSize: 600, onSuccess: onSuccess, onError: onError)
     }
     
 }

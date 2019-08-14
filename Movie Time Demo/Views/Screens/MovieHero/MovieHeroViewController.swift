@@ -8,6 +8,7 @@
 
 import UIKit
 
+
 class MovieHeroViewController: UIViewController {
     
     // MARK: Properties
@@ -34,6 +35,25 @@ class MovieHeroViewController: UIViewController {
     @IBOutlet weak var backgroundImage: UIImageView! {
         didSet {
             backgroundImage.backgroundColor = .darkGray
+            backgroundImage.contentMode = .scaleAspectFill
+        }
+    }
+    
+    @IBOutlet weak var artworkImage: UIImageView! {
+        didSet {
+            artworkImage.contentMode = .scaleAspectFit
+            artworkImage.clipsToBounds = false
+            artworkImage.layer.shadowColor = UIColor.black.cgColor
+            artworkImage.layer.shadowOpacity = 1
+            artworkImage.layer.shadowOffset = .zero
+            artworkImage.layer.shadowRadius = 10
+        }
+    }
+    
+    @IBOutlet weak var activityIndicatorView: UIActivityIndicatorView! {
+        didSet {
+            activityIndicatorView.hidesWhenStopped = true
+            activityIndicatorView.color = .white
         }
     }
     
@@ -122,6 +142,7 @@ class MovieHeroViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        setupViews()
         initViewController()
     }
     
@@ -132,6 +153,15 @@ extension MovieHeroViewController {
     
     // MARK: Setup & Initialization
     
+    func setupViews() {
+        let blurEffect = UIBlurEffect(style: UIBlurEffect.Style.dark)
+        let blurEffectView = UIVisualEffectView(effect: blurEffect)
+        blurEffectView.frame = backgroundImage.bounds
+        blurEffectView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+        blurEffectView.alpha = 0.9
+        backgroundImage.addSubview(blurEffectView)
+    }
+    
     func initViewController() {
         if let price = viewModel.data.price {
             priceLabel.text = R.string.localizable.priceFormat(Double(price))
@@ -140,6 +170,35 @@ extension MovieHeroViewController {
         artistLabel.text = viewModel.data.artist
         genreLabel.text = viewModel.data.genre
         longDescriptionLabel.text = viewModel.data.longDescription
+        
+        loadArtwork()
+    }
+    
+    
+    // MARK: Methods
+    
+    func loadArtwork() {
+        activityIndicatorView.startAnimating()
+        
+        // We know that thumbnail is/might already being cached, so we load it first
+        // to avoid the blank state.
+        RestApi.shared.getThumbnail(
+            for: viewModel.data,
+            onSuccess: { image in
+                self.backgroundImage.image = image
+            })
+        
+        RestApi.shared.getLargeArtwork(
+            for: viewModel.data,
+            onSuccess: { image in
+                self.activityIndicatorView.stopAnimating()
+                self.artworkImage.image = image
+                self.backgroundImage.image = image
+            },
+            onError: { _ in
+                self.activityIndicatorView.stopAnimating()
+                #warning("Load placeholder image")
+            })
     }
     
 }

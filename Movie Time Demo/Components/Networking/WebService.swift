@@ -15,6 +15,11 @@ struct WebService {
         detail: R.string.localizable.unexpectedErrorMessage()
     )
     
+    private let imageCache = AutoPurgingImageCache(
+        memoryCapacity: 100_000_000,
+        preferredMemoryUsageAfterPurge: 60_000_000
+    )
+    
     private static let sessionManager: Alamofire.SessionManager = {
         let config = URLSessionConfiguration.default
         
@@ -49,6 +54,11 @@ extension WebService {
     func getImage(from url: String,
                   onSuccess: @escaping (UIImage) -> Void,
                   onError: ((WebServiceError) -> Void)? = nil) {
+        if let cachedImage = imageCache.image(withIdentifier: url) {
+            onSuccess(cachedImage)
+            return
+        }
+        
         WebService.sessionManager.request(url).responseImage { response in
             guard let statusCode = response.response?.statusCode else {
                 Log.error("Can't get status code")
@@ -60,6 +70,7 @@ extension WebService {
             case 200...299:
                 if let image = response.result.value {
                     onSuccess(image)
+                    self.imageCache.add(image, withIdentifier: url)
                 } else {
                     onError?(self.genericError)
                 }
