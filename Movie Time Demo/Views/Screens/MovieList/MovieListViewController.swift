@@ -50,6 +50,11 @@ extension MovieListViewController {
     
     func initViewController() {
         self.navigationItem.title = AppConfig.name
+        self.navigationItem.backBarButtonItem = UIBarButtonItem(
+            title: R.string.localizable.back(),
+            style: .plain,
+            target: nil,
+            action: nil)
         if let navBar = self.navigationController?.navigationBar {
             navBar.prefersLargeTitles = true
             navBar.barTintColor = .white
