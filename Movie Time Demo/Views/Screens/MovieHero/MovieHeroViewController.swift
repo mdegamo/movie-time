@@ -185,6 +185,7 @@ extension MovieHeroViewController {
         RestApi.shared.getThumbnail(
             for: viewModel.data,
             onSuccess: { image in
+                self.artworkImage.image = image
                 self.backgroundImage.image = image
             })
         
