@@ -10,6 +10,9 @@ import Foundation
 
 struct AppConfig {
     
+    // The maximum number of thumbnails to show on a single line collection
+    static let maxThumbPerCollection = 10
+    
     // I usually pull the values of these structs from `Bundle.main` which varies
     // per build config, but for this demo I just hardcoded them.
     

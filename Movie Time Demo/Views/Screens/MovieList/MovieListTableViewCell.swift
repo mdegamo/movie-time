@@ -8,6 +8,13 @@
 
 import UIKit
 
+
+protocol MovieListTableViewCellActionsDelegate {
+    func didEmitViewAllAction(moviesCollection: MoviesCollectionDisplayModel)
+    func didSelectMovie(movie: MovieResponseModel)
+}
+
+
 class MovieListTableViewCell: UITableViewCell {
     
     // MARK: Properties
@@ -19,6 +26,8 @@ class MovieListTableViewCell: UITableViewCell {
             thumbsCollectionView.reloadData()
         }
     }
+    
+    var actionsDelegate: MovieListTableViewCellActionsDelegate?
     
     
     // MARK: Outlets
@@ -36,22 +45,26 @@ class MovieListTableViewCell: UITableViewCell {
         }
     }
     
-    @IBOutlet weak var thumbsCollectionView: MovieListThumbsCollectionView!
+    @IBOutlet weak var thumbsCollectionView: MovieListThumbsCollectionView! {
+        didSet {
+            thumbsCollectionView.actionsDelegate = self
+        }
+    }
     
     
-    // MARK: Setup & Initialization
+    // MARK: Actions
+    
+    @IBAction func didTapViewAllButton(_ sender: Any) {
+        actionsDelegate?.didEmitViewAllAction(moviesCollection: data)
+    }
+    
+}
 
-    override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
-        super.init(style: style, reuseIdentifier: reuseIdentifier)
-        setup()
+
+extension MovieListTableViewCell: MovieListThumbsActionsDelegate {
+    
+    func didSelectMovie(movie: MovieResponseModel) {
+        actionsDelegate?.didSelectMovie(movie: movie)
     }
     
-    required init?(coder aDecoder: NSCoder) {
-        super.init(coder: aDecoder)
-        setup()
-    }
-    
-    func setup() {
-        
-    }
 }

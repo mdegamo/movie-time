@@ -7,13 +7,9 @@
 //
 
 class MovieListViewModel {
+    
     let restApi = RestApi()
     
-//    let amaw = [[
-//        "collectionName" : "The Genre",
-//        "movies" : [MovieList]
-//        ]
-//    ]
 }
 
 
@@ -57,7 +53,7 @@ extension MovieListViewModel {
             if !featuredMovies.contains(where: { $0.id == movie.id }) {
                 featuredMovies.append(movie)
             }
-        } while (featuredMovies.count <= 10)
+        } while (featuredMovies.count < AppConfig.maxThumbPerCollection)
         
         return MoviesCollectionDisplayModel(collectionName: R.string.localizable.featured(),
                                             movies: featuredMovies)

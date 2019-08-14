@@ -37,6 +37,9 @@
                                                 <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="252" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NnO-ky-zGA">
                                                     <rect key="frame" x="352" y="55" width="46" height="30"/>
                                                     <state key="normal" title="Button"/>
+                                                    <connections>
+                                                        <action selector="didTapViewAllButton:" destination="fyR-Ae-bNQ" eventType="touchUpInside" id="NgZ-Fg-ZbT"/>
+                                                    </connections>
                                                 </button>
                                                 <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="zAn-6p-bvu" customClass="MovieListThumbsCollectionView" customModule="Movie_Time_Demo" customModuleProvider="target">
                                                     <rect key="frame" x="0.0" y="123.5" width="414" height="180"/>
@@ -51,28 +54,13 @@
                                                         <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                                     </collectionViewFlowLayout>
                                                     <cells>
-                                                        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="MovieListThumb.CellIdentifier" id="cPO-LD-f2k" customClass="MovieListThumbsCollectionViewCell" customModule="Movie_Time_Demo" customModuleProvider="target">
+                                                        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="MovieListThumb.CellIdentifier" id="cPO-LD-f2k" customClass="MovieThumbsCollectionViewCell" customModule="Movie_Time_Demo" customModuleProvider="target">
                                                             <rect key="frame" x="0.0" y="-31" width="324" height="242"/>
                                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                             <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
                                                                 <rect key="frame" x="0.0" y="0.0" width="324" height="242"/>
                                                                 <autoresizingMask key="autoresizingMask"/>
-                                                                <subviews>
-                                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="CpR-QB-9np" customClass="MovieThumbView" customModule="Movie_Time_Demo" customModuleProvider="target">
-                                                                        <rect key="frame" x="0.0" y="0.0" width="324" height="242"/>
-                                                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                                    </view>
-                                                                </subviews>
                                                             </view>
-                                                            <constraints>
-                                                                <constraint firstAttribute="bottom" secondItem="CpR-QB-9np" secondAttribute="bottom" id="CIH-uY-fxu"/>
-                                                                <constraint firstItem="CpR-QB-9np" firstAttribute="leading" secondItem="cPO-LD-f2k" secondAttribute="leading" id="Lun-fn-y0R"/>
-                                                                <constraint firstItem="CpR-QB-9np" firstAttribute="top" secondItem="cPO-LD-f2k" secondAttribute="top" id="U7p-F1-Gqc"/>
-                                                                <constraint firstAttribute="trailing" secondItem="CpR-QB-9np" secondAttribute="trailing" id="kJW-jb-IYG"/>
-                                                            </constraints>
-                                                            <connections>
-                                                                <outlet property="thumbView" destination="CpR-QB-9np" id="xWJ-BA-qlc"/>
-                                                            </connections>
                                                         </collectionViewCell>
                                                     </cells>
                                                 </collectionView>
@@ -110,11 +98,29 @@
                     <navigationItem key="navigationItem" id="SRm-de-TEl"/>
                     <connections>
                         <outlet property="mainTableView" destination="VLR-3z-7pu" id="fab-A0-KI2"/>
+                        <segue destination="tCE-dg-JYk" kind="show" identifier="MovieListToMovieCollection.SegueIdentifier" id="ivc-Bw-GGo"/>
+                        <segue destination="Adk-qk-iAZ" kind="show" identifier="MovieListToMovieHero.SegueIdentifier" id="4e6-Lb-a0B"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="969.56521739130437" y="-668.30357142857144"/>
+        </scene>
+        <!--MovieCollectionList-->
+        <scene sceneID="Cw8-xy-SZx">
+            <objects>
+                <viewControllerPlaceholder storyboardName="MovieCollectionList" id="tCE-dg-JYk" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Lhy-Wr-0yB" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1680" y="-895"/>
+        </scene>
+        <!--MovieHeroView-->
+        <scene sceneID="Ysb-hJ-Uyp">
+            <objects>
+                <viewControllerPlaceholder storyboardName="MovieHeroView" id="Adk-qk-iAZ" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="WAj-sw-LQ3" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1700" y="-642"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="kY5-0E-erb">

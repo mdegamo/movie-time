@@ -59,14 +59,24 @@ class MovieThumbView: UIView {
     
     // MARK: Setup & Initialization
     
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+        setupXib()
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
+        setupXib()
+    }
+    
     override func awakeFromNib() {
         super.awakeFromNib()
-        setup()
+        setupXib()
     }
     
     override func prepareForInterfaceBuilder() {
         super.prepareForInterfaceBuilder()
-        setup()
+        setupXib()
         contentView?.prepareForInterfaceBuilder()
     }
     
@@ -76,11 +86,7 @@ class MovieThumbView: UIView {
 extension MovieThumbView {
     
     // MARK: Setup & Initialization
-    
-    func setup() {
-        setupXib()
-    }
-    
+
     func setupXib() {
         backgroundColor = .clear
         let view = initContentView(fromNibNamed: R.nib.movieThumbView.name)

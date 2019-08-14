@@ -8,11 +8,19 @@
 
 import UIKit
 
+protocol MovieListTableViewActionsDelegate {
+    func didEmitViewAllAction(moviesCollection: MoviesCollectionDisplayModel)
+    func didSelectMovie(movie: MovieResponseModel)
+}
+
+
 class MovieListTableView: UITableView {
     
     // Properties
     
     var data = [MoviesCollectionDisplayModel]()
+    
+    var actionsDelegate: MovieListTableViewActionsDelegate?
     
     
     // MARK: Setup & Initialization
@@ -39,7 +47,6 @@ class MovieListTableView: UITableView {
 extension MovieListTableView: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        Log.debug("XX Data Count", data.count)
         return data.count
     }
     
@@ -49,9 +56,23 @@ extension MovieListTableView: UITableViewDataSource {
         
         if let cellData = data[safe: indexPath.item] {
             cell.data = cellData
+            cell.actionsDelegate = self
         }
         
         return cell
+    }
+    
+}
+
+
+extension MovieListTableView: MovieListTableViewCellActionsDelegate {
+    
+    func didEmitViewAllAction(moviesCollection: MoviesCollectionDisplayModel) {
+        actionsDelegate?.didEmitViewAllAction(moviesCollection: moviesCollection)
+    }
+    
+    func didSelectMovie(movie: MovieResponseModel) {
+        actionsDelegate?.didSelectMovie(movie: movie)
     }
     
 }

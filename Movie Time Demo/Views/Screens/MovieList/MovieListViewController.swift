@@ -20,6 +20,19 @@ class MovieListViewController: UIViewController {
     @IBOutlet weak var mainTableView: MovieListTableView!
     
     
+    // MARK: Overrides
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if let receiver = segue.destination as? MovieCollectionListViewController,
+            let data = sender as? MoviesCollectionDisplayModel {
+            receiver.viewModel.data = data
+        } else if let receiver = segue.destination as? MovieHeroViewController,
+            let data = sender as? MovieResponseModel {
+            receiver.viewModel.data = data
+        }
+    }
+    
+    
     // MARK: Lifecycle
 
     override func viewDidLoad() {
@@ -37,9 +50,16 @@ extension MovieListViewController {
     
     func initViewController() {
         self.navigationItem.title = AppConfig.name
+        if let navBar = self.navigationController?.navigationBar {
+            navBar.prefersLargeTitles = true
+            navBar.barTintColor = .white
+            navBar.shadowImage = UIImage()
+        }
+        mainTableView.actionsDelegate = self
     }
     
     func refreshTableView() {
+        #warning("Show progress")
         viewModel.fetchMovies(onSuccess: { movieCollection in
             self.mainTableView.data = movieCollection
             self.mainTableView.reloadData()
@@ -50,3 +70,15 @@ extension MovieListViewController {
     
 }
 
+
+extension MovieListViewController: MovieListTableViewActionsDelegate {
+    
+    func didEmitViewAllAction(moviesCollection: MoviesCollectionDisplayModel) {
+        performSegue(withIdentifier: R.segue.movieListViewController.movieListToMovieCollectionSegueIdentifier.identifier, sender: moviesCollection)
+    }
+    
+    func didSelectMovie(movie: MovieResponseModel) {
+        performSegue(withIdentifier: R.segue.movieListViewController.movieListToMovieHeroSegueIdentifier.identifier, sender: movie)
+    }
+    
+}

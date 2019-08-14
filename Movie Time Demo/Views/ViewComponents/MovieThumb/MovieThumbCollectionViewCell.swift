@@ -8,9 +8,11 @@
 
 import UIKit
 
-class MovieListThumbsCollectionViewCell: UICollectionViewCell {
+class MovieThumbsCollectionViewCell: UICollectionViewCell {
     
     // MARK: Properties
+    
+    var thumbView: MovieThumbView!
     
     var data: MovieResponseModel! {
         didSet {
@@ -22,11 +24,6 @@ class MovieListThumbsCollectionViewCell: UICollectionViewCell {
             thumbView.artistLabel.text = data.artist
         }
     }
-    
-    
-    // MARK: Outlets
-    
-    @IBOutlet weak var thumbView: MovieThumbView!
     
     
     // MARK: Setup & Initialization
@@ -42,6 +39,13 @@ class MovieListThumbsCollectionViewCell: UICollectionViewCell {
     }
     
     func setup() {
+        thumbView = MovieThumbView(frame: .zero)
         
+        addSubview(thumbView)
+        thumbView.translatesAutoresizingMaskIntoConstraints = false
+        thumbView.topAnchor.constraint(equalTo: self.topAnchor).isActive = true
+        thumbView.bottomAnchor.constraint(equalTo: self.bottomAnchor).isActive = true
+        thumbView.leadingAnchor.constraint(equalTo: self.leadingAnchor).isActive = true
+        thumbView.trailingAnchor.constraint(equalTo: self.trailingAnchor).isActive = true
     }
 }
