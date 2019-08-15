@@ -27,7 +27,7 @@ extension MovieThumbsCollectionViewCellRenderDelegate {
             },
             onError: { _ in
                 cell.thumbView.activityIndicatorView.stopAnimating()
-                #warning("Load placeholder image")
+                cell.thumbView.thumbnailImageView.image = R.image.brokenImage()
             })
     }
     

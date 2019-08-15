@@ -11,9 +11,11 @@
 "Error" = "Error";
 "Favorites" = "Favorites";
 "Featured" = "Featured";
+"FetchingMovies" = "Fetching Movies ...";
 "Genre" = "Genre";
 "PriceFormat" = "$ %.02f";
 "ServerError" = "ServerError";
+"TryAgain" = "Try Again";
 "Unknown" = "Unknown";
 "ViewAll" = "View All";
 
@@ -22,5 +24,6 @@
  * ERROR MESSAGES
  */
 
+"FetchingMoviesErrorMessage" = "Oooops! There was an error fetching movies.";
 "ServerErrorMessage" = "Oooops! A server error occured. Please try again later.";
 "UnexpectedErrorMessage" = "Oooops! We encountered an error on our end. Please try again later.";

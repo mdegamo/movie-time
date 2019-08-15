@@ -19,6 +19,21 @@ class MovieListViewController: UIViewController {
     
     @IBOutlet weak var mainTableView: MovieListTableView!
     
+    @IBOutlet weak var activityIndicatorView: UIActivityIndicatorView! {
+        didSet {
+            activityIndicatorView.hidesWhenStopped = true
+            activityIndicatorView.stopAnimating()
+        }
+    }
+    
+    @IBOutlet weak var loadingLabel: UILabel! {
+        didSet {
+            loadingLabel.textAlignment = .center
+            loadingLabel.text = R.string.localizable.fetchingMovies()
+            loadingLabel.isHidden = true
+        }
+    }
+    
     
     // MARK: Overrides
     
@@ -84,13 +99,41 @@ extension MovieListViewController {
     }
     
     func refreshTableView() {
-        #warning("Show progress")
+        displayAsLoading(true)
         viewModel.fetchMovies(onSuccess: { movieCollection in
             self.mainTableView.data = movieCollection
             self.mainTableView.reloadData()
+            self.displayAsLoading(false)
         }, onError: { error in
+            self.displayAsLoading(false)
             
+            let alert = UIAlertController(
+                title: R.string.localizable.error(),
+                message: R.string.localizable.fetchingMoviesErrorMessage(),
+                preferredStyle: .alert)
+            let action = UIAlertAction(
+                title: R.string.localizable.tryAgain(),
+                style: .default,
+                handler: { _ in
+                    alert.dismiss(animated: true, completion: {
+                        self.refreshTableView()
+                    })
+                })
+            alert.addAction(action)
+            self.present(alert, animated: true, completion: nil)
         })
+    }
+    
+    func displayAsLoading(_ flag: Bool) {
+        if flag {
+            activityIndicatorView.startAnimating()
+            loadingLabel.isHidden = false
+            mainTableView.isHidden = true
+        } else {
+            activityIndicatorView.stopAnimating()
+            loadingLabel.isHidden = true
+            mainTableView.isHidden = false
+        }
     }
     
 }

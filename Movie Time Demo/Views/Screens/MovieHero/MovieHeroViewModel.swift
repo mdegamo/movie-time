@@ -12,4 +12,13 @@ class MovieHeroViewModel {
     
     var data: MovieResponseModel!
     
+    var isFavorited: Bool {
+        if let trackId = data.id,
+            FavoriteStore.getFavorites().contains(trackId) {
+            return true
+        }
+        
+        return false
+    }
+    
 }

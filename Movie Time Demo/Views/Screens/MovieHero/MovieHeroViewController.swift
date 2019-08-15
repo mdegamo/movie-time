@@ -26,9 +26,12 @@ class MovieHeroViewController: UIViewController {
     
     @IBOutlet weak var dismissButton: UIButton! {
         didSet {
-            dismissButton.layer.cornerRadius = CGFloat(16)
+            dismissButton.layer.cornerRadius = CGFloat(14)
             dismissButton.clipsToBounds = true
             dismissButton.backgroundColor = UIColor.white.withAlphaComponent(0.8)
+            dismissButton.setImage(R.image.close(), for: .normal)
+            dismissButton.tintColor = .darkGray
+            dismissButton.contentEdgeInsets = UIEdgeInsets(top: 8, left: 8, bottom: 8, right: 8)
         }
     }
     
@@ -77,7 +80,7 @@ class MovieHeroViewController: UIViewController {
         didSet {
             favoriteButton.layer.cornerRadius = CGFloat(20)
             favoriteButton.clipsToBounds = true
-            favoriteButton.backgroundColor = .white
+            favoriteButton.backgroundColor = UIColor.white.withAlphaComponent(0.6)
         }
     }
     
@@ -135,17 +138,9 @@ class MovieHeroViewController: UIViewController {
         
         if let trackId = viewModel.data.id {
             if FavoriteStore.getFavorites().contains(trackId) {
-                if FavoriteStore.removeFromFavorites(trackId) {
-                    favoriteButton.backgroundColor = .white
-                } else {
-                    favoriteButton.backgroundColor = .red
-                }
+                showAsFavorited(!FavoriteStore.removeFromFavorites(trackId))
             } else {
-                if FavoriteStore.addToFavorites(trackId) {
-                    favoriteButton.backgroundColor = .red
-                } else {
-                    favoriteButton.backgroundColor = .white
-                }
+                showAsFavorited(FavoriteStore.addToFavorites(trackId))
             }
         }
         
@@ -201,10 +196,7 @@ extension MovieHeroViewController {
         genreLabel.text = viewModel.data.genre
         longDescriptionLabel.text = viewModel.data.longDescription
         
-        if let trackId = viewModel.data.id,
-            FavoriteStore.getFavorites().contains(trackId) {
-            favoriteButton.backgroundColor = .red
-        }
+        showAsFavorited(viewModel.isFavorited)
         
         loadArtwork()
     }
@@ -233,8 +225,20 @@ extension MovieHeroViewController {
             },
             onError: { _ in
                 self.activityIndicatorView.stopAnimating()
-                #warning("Load placeholder image")
+                self.artworkImage.image = R.image.brokenImage()
             })
+    }
+    
+    func showAsFavorited(_ flag: Bool) {
+        if flag {
+            favoriteButton.tintColor = .red
+            favoriteButton.alpha = 1
+            favoriteButton.setImage(R.image.heartFill(), for: .normal)
+        } else {
+            favoriteButton.tintColor = .white
+            favoriteButton.alpha = 0.8
+            favoriteButton.setImage(R.image.heartHollow(), for: .normal)
+        }
     }
     
 }

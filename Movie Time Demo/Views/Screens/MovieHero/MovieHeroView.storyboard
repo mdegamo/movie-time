@@ -148,10 +148,10 @@
                                 </constraints>
                             </scrollView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="alx-s9-EQp">
-                                <rect key="frame" x="366" y="16" width="32" height="32"/>
+                                <rect key="frame" x="370" y="16" width="28" height="28"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="32" id="YvO-nH-AU6"/>
-                                    <constraint firstAttribute="width" constant="32" id="dFg-tc-5es"/>
+                                    <constraint firstAttribute="height" constant="28" id="YvO-nH-AU6"/>
+                                    <constraint firstAttribute="width" constant="28" id="dFg-tc-5es"/>
                                 </constraints>
                                 <connections>
                                     <action selector="didTapDismissButton:" destination="M5L-Xr-HnL" eventType="touchUpInside" id="NCw-u1-Uiq"/>

@@ -17,6 +17,15 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="22k-S2-YVY">
+                                <rect key="frame" x="197" y="465" width="20" height="20"/>
+                            </activityIndicatorView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mHD-je-UPo">
+                                <rect key="frame" x="186" y="509" width="42" height="20.5"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="VLR-3z-7pu" customClass="MovieListTableView" customModule="Movie_Time_Demo" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="88" width="414" height="808"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -88,15 +97,21 @@
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
+                            <constraint firstItem="22k-S2-YVY" firstAttribute="bottom" secondItem="mHD-je-UPo" secondAttribute="top" constant="-24" id="8D2-fb-DCs"/>
                             <constraint firstItem="VLR-3z-7pu" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="BXW-Az-SL1"/>
                             <constraint firstAttribute="bottom" secondItem="VLR-3z-7pu" secondAttribute="bottom" id="DUt-nr-At4"/>
+                            <constraint firstItem="22k-S2-YVY" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="GPl-SZ-Mij"/>
                             <constraint firstItem="VLR-3z-7pu" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="UVY-sZ-eC3"/>
+                            <constraint firstItem="mHD-je-UPo" firstAttribute="centerX" secondItem="22k-S2-YVY" secondAttribute="centerX" id="n8q-dR-vjb"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="VLR-3z-7pu" secondAttribute="trailing" id="sw0-ck-2o3"/>
+                            <constraint firstItem="22k-S2-YVY" firstAttribute="centerY" secondItem="6Tk-OE-BBY" secondAttribute="centerY" id="zsT-5U-BGw"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <navigationItem key="navigationItem" id="SRm-de-TEl"/>
                     <connections>
+                        <outlet property="activityIndicatorView" destination="22k-S2-YVY" id="DKH-qy-HnL"/>
+                        <outlet property="loadingLabel" destination="mHD-je-UPo" id="zeo-Ok-xeF"/>
                         <outlet property="mainTableView" destination="VLR-3z-7pu" id="fab-A0-KI2"/>
                         <segue destination="tCE-dg-JYk" kind="show" identifier="MovieListToMovieCollection.SegueIdentifier" id="ivc-Bw-GGo"/>
                         <segue destination="Adk-qk-iAZ" kind="showDetail" identifier="MovieListToMovieHero.SegueIdentifier" id="4e6-Lb-a0B"/>
