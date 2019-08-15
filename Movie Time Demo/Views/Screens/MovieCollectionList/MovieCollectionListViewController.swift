@@ -80,13 +80,11 @@ extension MovieCollectionListViewController {
             return
         }
         
-        let favorites = FavoriteStore.getFavorites()
-        if favorites.count == 0 {
-            navigationController?.popViewController(animated: true)
+        if viewModel.hasFavorites {
+            viewModel.refreshDataFromFavorites()
+            refreshCollectionView()
         } else {
-            let movies = viewModel.data.movies.filter { favorites.contains($0.id ?? -9999) }
-            mainCollectionView.data = movies
-            mainCollectionView.reloadData()
+            navigationController?.popViewController(animated: true)
         }
     }
     

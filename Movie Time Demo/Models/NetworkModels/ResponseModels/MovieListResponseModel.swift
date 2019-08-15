@@ -6,8 +6,8 @@
 //  Copyright © 2019 Mark Anthony Degamo. All rights reserved.
 //
 
-import Foundation
-
+/// This struct is used as an object representation of the returned json
+/// form iTunes' response
 struct MovieListResponseModel: Decodable {
     let resultCount: Int
     let results: [MovieResponseModel]

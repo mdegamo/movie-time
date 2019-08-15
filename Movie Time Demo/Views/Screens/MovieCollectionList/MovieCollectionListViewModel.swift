@@ -12,4 +12,20 @@ class MovieCollectionListViewModel {
     
     var data: MoviesCollectionDisplayModel!
     
+    var hasFavorites: Bool {
+        return FavoriteStore.getFavorites().count > 0
+    }
+    
+}
+
+
+extension MovieCollectionListViewModel {
+    
+    func refreshDataFromFavorites() {
+        let favorites = FavoriteStore.getFavorites()
+        let filteredMovies = data.movies.filter { favorites.contains($0.id ?? -9999) }
+        let newData = MoviesCollectionDisplayModel(collectionName: data.collectionName, movies: filteredMovies)
+        data = newData
+    }
+    
 }

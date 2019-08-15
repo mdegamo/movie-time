@@ -8,6 +8,7 @@
 
 import UIKit
 
+/// Protocol with helper functions used for creating custom views with Nibs.
 protocol XibLoadable {
     func initContentView(fromNibNamed nibName: String) -> UIView
     func loadViewFromNib(_ nibName: String) -> UIView

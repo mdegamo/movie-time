@@ -9,6 +9,12 @@
 import Alamofire
 import AlamofireImage
 
+/// This struct handles the app's somewhat low-level networking logic.
+/// This is simply an abstraction of Alamofire. This struct isn't meant to be
+/// used on e.g. `ViewControllers` directly. Use `RestApi` for that case.
+///
+/// Why not use Alamofire directly on the e.g. `ViewController`?
+/// - Answer: So that it's easy to switch. If I decide to use `URLSession` other libs later.
 struct WebService {
     private let genericError: WebServiceError = (
         title: R.string.localizable.error(),

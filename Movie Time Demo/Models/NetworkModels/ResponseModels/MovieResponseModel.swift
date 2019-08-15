@@ -6,8 +6,8 @@
 //  Copyright © 2019 Mark Anthony Degamo. All rights reserved.
 //
 
-import Foundation
-
+/// This struct is used as an object representation from the list of movies
+/// returned by iTunes' json string.
 struct MovieResponseModel : Decodable {
     
     let id: TrackId?

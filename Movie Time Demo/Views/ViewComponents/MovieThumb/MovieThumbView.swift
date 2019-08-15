@@ -8,6 +8,7 @@
 
 import UIKit
 
+/// A custom view for movie thumbnails. Includes artwork, title, artist and price.
 class MovieThumbView: UIView {
     
     // MARK: Outlets

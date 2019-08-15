@@ -6,7 +6,7 @@
 //  Copyright © 2019 Mark Anthony Degamo. All rights reserved.
 //
 
-/// Aliases for some types. Just to provide clarity.
+/// Aliases for some types. Just to provide code clarity.
 
 typealias TrackId = Int
 

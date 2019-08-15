@@ -8,6 +8,8 @@
 
 import Foundation
 
+/// Centralized app configuration. See details here: https://noypi.dev/posts/how-i-made-my-android-configs-more-manageable/
+/// The post is written for Android (I haven't posted for iOS yet) but the idea is the same.
 struct AppConfig {
     
     // The maximum number of thumbnails to show on a single line collection
@@ -23,11 +25,11 @@ struct AppConfig {
     struct Api {
         static let baseUrl = "https://itunes.apple.com"
         static let baseSearchUrl = "\(baseUrl)/search"
-        static let baseLookupUrl = "\(baseUrl)/lookup"
     }
     
     struct Security {
         // This is always true here but idealy this must be set to false on production.
         static let isLoggingEnabled = true
     }
+
 }

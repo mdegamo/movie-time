@@ -8,14 +8,23 @@
 
 import Foundation
 
+
+/// UserDefaults wrapper for persisting movies that are "favorited" by the user.
 struct FavoriteStore {
     
     private static let movieIdKey = "\(AppConfig.identity).UserDefaults.FavoriteStore.favoriteMovie"
     
+    /// Get a list of movies "favorited" by the user.
+    ///
+    /// - Returns: An array of `TrackId`
     static func getFavorites() -> [TrackId] {
         return (UserDefaults.standard.array(forKey: movieIdKey) as? [TrackId]) ?? [TrackId]()
     }
     
+    /// Adds a movie to "Favorites".
+    ///
+    /// - Parameter id: The movie `id`
+    /// - Returns: returns `true` if successful `false` otherwise
     static func addToFavorites(_ id: TrackId) -> Bool {
         var favorites = getFavorites()
         
@@ -31,6 +40,10 @@ struct FavoriteStore {
         return false
     }
     
+    /// Removes a movie from "Favorites".
+    ///
+    /// - Parameter id: The movie `id`
+    /// - Returns: returns `true` if successful `false` otherwise
     static func removeFromFavorites(_ id: TrackId) -> Bool {
         let favorites = getFavorites()
         
@@ -45,7 +58,7 @@ struct FavoriteStore {
         
         return false
     }
-    
+
     private static func emitUpdateNotification() {
         NotificationCenter.default.post(
             name: NSNotification.Name(rawValue: ObserverNotificationKeys.didUpdateFavoritesKey),
